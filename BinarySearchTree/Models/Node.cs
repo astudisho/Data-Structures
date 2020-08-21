@@ -26,6 +26,26 @@ namespace BinarySearchTree.Models
             return result;
         }
 
+        public bool IsEqualThan(Node<T> other)
+        {
+            var result = Data.CompareTo(other.Data) == 0;
+
+            return result;
+        }
+
+        public bool IsEqualThan(T other)
+        {
+            var result = Data.CompareTo(other) == 0;
+
+            return result;
+        }
+
+        public bool IsLessThan(T other)
+        {
+            var result = Data.CompareTo(other) < 0;
+            return result;
+        }
+
         public static void PrintNode(Node<T> node)
         {
             Console.WriteLine($"Node: {node.Data.ToString()} -->");
