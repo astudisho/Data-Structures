@@ -27,6 +27,18 @@ namespace BinarySearchTree
             Console.WriteLine();
             Console.WriteLine("Post Order");
             tree.PostOrderTraversal(x => Console.Write($" {x} -->"));
+
+            var searchNumber = 50;
+            Console.WriteLine();
+            Console.WriteLine($"Found: {searchNumber} {tree.Search(searchNumber,out var node)} {node}");
+
+            searchNumber = 5;
+            Console.WriteLine();
+            Console.WriteLine($"Found: {searchNumber} {tree.Search(searchNumber, out node)} {node}");
+
+            searchNumber = 100;
+            Console.WriteLine();
+            Console.WriteLine($"Found: {searchNumber} {tree.Search(searchNumber, out node)} {node}");
         }
     }
 }

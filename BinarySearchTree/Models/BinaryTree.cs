@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace BinarySearchTree.Models
 {
-    class BinaryTree<T> where T : IComparable
+    class BinaryTree<T> : IEnumerable<T> where T : IComparable
     {
         Node<T> Root;
 
@@ -93,6 +95,43 @@ namespace BinarySearchTree.Models
             action(node.Data);
         }
 
+        public bool Search(T value, out Node<T> searchNode) => Search(value, Root, out searchNode);
+
+        private bool Search(T value, Node<T> currentNode, out Node<T> searchNode)
+        {
+            var found = false;
+            if (currentNode is null)
+            {
+                searchNode = null;
+                return false;
+            }
+            
+            if (currentNode.IsEqualThan(value))
+            {
+                searchNode = currentNode;
+                return true;
+            }
+            else if (currentNode.IsLessThan(value))
+            {
+                found = Search(value, currentNode.Right, out searchNode);
+            }
+            else
+            {
+                found = Search(value, currentNode.Left, out searchNode);
+            }
+
+            return found;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
